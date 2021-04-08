@@ -1,30 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from "react-redux";
+import ListItem from "./components/ListItem";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App-header">
+        <input style={{ width: '18rem', height: '3rem', fontSize: 18, flexDirection: 'row-reverse' }}></input>
+        <ListItem />
+        <ListItem />
+        <hr style={{ width: '80%', marginTop: 30 }} />
+        <s>
+          <ListItem />
+        </s>
+      </div>
     </div>
   );
 }
 
 const mapStateToProps = (state: any) => {
-  var data={ToDo: state.ToDo}
+  var data = { ToDo: state.ToDo }
   return data;
 };
 
