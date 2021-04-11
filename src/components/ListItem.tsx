@@ -1,14 +1,20 @@
-export function ListItem(category:any, item:any) {
+import React from 'react';
+import { AssignCategoryDialogue } from "./AssignCategoryDialogue";
+
+export function ListItem({category, item, categories}:any) {
+  const [openDialogue, setOpenDialogue] = React.useState(false);
+  console.log('categoryList2=',categories)
     return (
         <div style={{height: 50, alignContent: 'center', justifyContent:'center', justifyItems:'center'}}>
-          <span style={{ fontSize: 20, paddingRight:'5rem' }}>{'#'+category.category}</span>
+          {openDialogue && <AssignCategoryDialogue open={openDialogue} setOpen={setOpenDialogue} categories={categories} category={category}/>}
+          <span style={{ fontSize: 20, paddingRight:'5rem' }}>{'#'+category}</span>
           <input
-            name="isGoing"
+            name="isChecked"
             about="Note1"
             type="checkbox"
             height={22} />
-          <span style={{ fontSize: 20, paddingLeft: 20, marginRight: '3rem' }}>{category.item}</span>
-          <button className={'button'}>Assign</button>
+          <span style={{ fontSize: 20, paddingLeft: 20, marginRight: '3rem' }}>{item}</span>
+          <button className={'button'} onClick={()=>setOpenDialogue(true)}>Assign</button>
         </div>
     )
 }
